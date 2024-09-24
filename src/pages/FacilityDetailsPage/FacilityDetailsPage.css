@@ -1,0 +1,5 @@
+.selected {
+    background-color: #00725A !important; /* Example selected color */
+    color: white !important; /* Example text color */
+    border-color: #00725A !important; /* Example border color */
+  }

@@ -1,0 +1,10 @@
+.ant-drawer-mask {
+  background: none !important;
+}
+
+.ant-menu-item-selected {
+  color: #00725a !important;
+}
+.ant-drawer-body{
+    padding: 0 !important;
+}
