@@ -20,7 +20,7 @@ const Login = () => {
   const navigate = useNavigate();
   const [login] = useLoginMutation();
   const dispatch = useAppDispatch();
-  
+
   const onSubmit: SubmitHandler<FieldValues> = async (data) => {
     const userInfo = {
       email: data.email,
@@ -47,15 +47,13 @@ const Login = () => {
     <Row
       justify={"center"}
       align={"middle"}
-      className="lg:bg-gradient-to-r lg:from-[#00725A] lg:to-[#FFA500]"
-      style={{ height: "calc(100vh - 93px)" }}
-    >
+      className="lg:bg-gradient-to-r lg:from-[#91F350] lg:to-[#49e0fb]"
+      style={{ height: "calc(100vh - 93px)" }}>
       <Col
         className="p-8 shadow-lg rounded-lg bg-white"
         sm={12}
         md={6}
-        style={{ minWidth: "300px" }}
-      >
+        style={{ minWidth: "300px" }}>
         <SFform onSubmit={onSubmit}>
           <Title style={{ color: "#00725A" }} level={2}>
             Sign In
@@ -73,8 +71,7 @@ const Login = () => {
               />
               <Text
                 className="text-xs text-secondary"
-                style={{ float: "right", paddingTop: "9px" }}
-              >
+                style={{ float: "right", paddingTop: "9px" }}>
                 <a href="#" className="hover:underline">
                   Forgot Password?
                 </a>
@@ -83,32 +80,30 @@ const Login = () => {
 
             <Col span={24}>
               <Form.Item>
-                <Button
-                  type="primary"
-                  htmlType="submit"
+                <button
+                  className="my-primary-btn"
+                  type="submit"
                   style={{
                     backgroundColor: "#00725A",
                     borderColor: "#00725A",
                     width: "100%",
-                  }}
-                >
+                  }}>
                   Submit
-                </Button>
+                </button>
               </Form.Item>
             </Col>
 
             {/* Register Button */}
             <Col span={24}>
-              <Button
-                type="default"
-                onClick={() => navigate('/register')}
+              <button
+                className="my-primary-btn"
+                onClick={() => navigate("/register")}
                 style={{
                   width: "100%",
                   marginBottom: "20px",
-                }}
-              >
+                }}>
                 Register
-              </Button>
+              </button>
             </Col>
 
             <Col span={24}>

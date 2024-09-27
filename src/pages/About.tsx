@@ -1,368 +1,141 @@
 import React from "react";
-import {
-  Layout,
-  Typography,
-  Row,
-  Col,
-  Card,
-  Button,
-  Timeline,
-  Image,
-  Divider,
-} from "antd";
+import { Card, Timeline, Typography, Avatar, Space } from "antd";
 import {
   MailOutlined,
   PhoneOutlined,
   EnvironmentOutlined,
 } from "@ant-design/icons";
-import image1 from "../assets/contact.png";
-import team1 from "../assets/images/TeamImage/team1.jpg";
-import team2 from "../assets/images/TeamImage/team2.jpg";
-import team3 from "../assets/images/TeamImage/team3.jpg";
-import mileStoneSuccess from "../assets/images/TeamImage/Milestone-Success.jpg";
-import ScrollToTopButton from "../components/ui/ScrollToTop/ScrollToTop";
 
-const { Title, Paragraph } = Typography;
-const { Header, Content, Footer } = Layout;
+const { Title, Text } = Typography;
 
-const AboutPage = () => {
+const teamMembers = [
+  {
+    name: "John Doe",
+    role: "CEO & Founder",
+    bio: "John has over 15 years of experience in the sports industry and is passionate about building world-class facilities.",
+    img: "https://wac-cdn.atlassian.com/dam/jcr:ba03a215-2f45-40f5-8540-b2015223c918/Max-R_Headshot%20(1).jpg?cdnVersion=2280",
+  },
+  {
+    name: "Jane Smith",
+    role: "Operations Manager",
+    bio: "Jane ensures the smooth operation of all facilities and manages our staff of professionals.",
+    img: "https://media.licdn.com/dms/image/v2/D5603AQEhBYaldyR_rg/profile-displayphoto-shrink_400_400/profile-displayphoto-shrink_400_400/0/1712338616576?e=2147483647&v=beta&t=bziv00oSahHbPawEkrwZwMN3C2ReWGTKRTRhBkro66k",
+  },
+  {
+    name: "Mike Johnson",
+    role: "Head of Marketing",
+    bio: "Mike is responsible for bringing our services to a global audience and developing innovative campaigns.",
+    img: "https://media.licdn.com/dms/image/v2/D4E03AQHAicorH24m_Q/profile-displayphoto-shrink_400_400/profile-displayphoto-shrink_400_400/0/1680284481785?e=2147483647&v=beta&t=WrmMOUYhvDpQR6xnDE1jvTKNdL5sk3uz44xkiHVCt9g",
+  },
+];
+
+const milestonesData = [
+  {
+    year: "2015",
+    title: "Company Founded",
+    description:
+      "Our journey began with a vision to revolutionize the sports facility industry.",
+  },
+  {
+    year: "2017",
+    title: "First Major Partnership",
+    description:
+      "We secured our first major partnership, expanding our services across the region.",
+  },
+  {
+    year: "2021",
+    title: "International Expansion",
+    description:
+      "We expanded into international markets to offer world-class sports facilities globally.",
+  },
+  {
+    year: "2023",
+    title: "Launched Mobile App",
+    description:
+      "We launched a mobile app to make facility booking easier for our customers.",
+  },
+];
+
+const AboutUs: React.FC = () => {
   return (
-    <Layout>
-      {/* Header Section */}
-      <Header
-        style={{
-          background: "#00725A",
-          padding: "0 20px",
-          textAlign: "center",
-        }}
-      >
-        <Title level={2} style={{ color: "white", margin: 0 }}>
-          About Us
+    <div className="py-10 bg-gray-100">
+      {/* Mission Statement Section */}
+      <div className="max-w-4xl mx-auto text-center mb-10 px-4">
+        <Title className="text-3xl font-semibold text-[#49e0fb]">
+          <span className="text-[#49e0fb]">Our Mission</span>
         </Title>
-      </Header>
+        <Text className="text-gray-600 mt-2">
+          Our mission is to provide world-class sports facilities that empower
+          athletes to reach their full potential, while promoting health and
+          well-being for all.
+        </Text>
+      </div>
 
-      {/* ====================Content Section===================== */}
-      <Content style={{ padding: "40px", background: "#f0f2f5" }}>
-        <Row gutter={[32, 32]} justify="center">
-          {/* Welcome Section */}
-          <Col span={24}>
-            <Card
-              bordered={false}
-              style={{
-                borderRadius: "10px",
-                boxShadow: "0 4px 12px rgba(0, 0, 0, 0.1)",
-              }}
-            >
-              <Title
-                level={3}
-                style={{ color: "#00725A", textAlign: "center" }}
-              >
-                Welcome to Our Sports Facility Booking Platform
+      {/* Team Section */}
+      <div className="max-w-6xl mx-auto px-4 md:px-6 mb-10">
+        <Title className="text-center text-3xl font-semibold text-[#49e0fb] mb-6">
+          <span className="text-[#49e0fb]"> Meet the Team</span>
+        </Title>
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+          {teamMembers.map((member, index) => (
+            <Card key={index} className="shadow-lg rounded-lg p-6">
+              <div className="flex flex-col items-center">
+                <Avatar src={member.img} size={120} className="mb-4" />
+                <Title level={4} className="text-[#49e0fb]">
+                  {member.name}
+                </Title>
+                <Text className="text-gray-500">{member.role}</Text>
+                <Text className="text-gray-600 text-center mt-2">
+                  {member.bio}
+                </Text>
+              </div>
+            </Card>
+          ))}
+        </div>
+      </div>
+
+      {/* History & Milestones */}
+      <div className="max-w-6xl mx-auto px-4 md:px-6 mb-10">
+        <Title className="text-center text-3xl font-semibold text-[#49e0fb] mb-6">
+          <span className="text-[#49e0fb]"> Our History & Milestones</span>
+        </Title>
+        <Timeline className="bg-white p-6 rounded-lg shadow-lg">
+          {milestonesData.map((milestone, index) => (
+            <Timeline.Item key={index} className="text-left">
+              <Title level={5} className="text-[#49e0fb]">
+                {milestone.year}
               </Title>
-              <Paragraph
-                style={{
-                  fontSize: "16px",
-                  textAlign: "center",
-                  maxWidth: "800px",
-                  margin: "0 auto",
-                }}
-              >
-                Our platform connects sports enthusiasts with top facilities,
-                making it easy to find and book your preferred sports venue with
-                just a few clicks. Whether you're looking for a football pitch,
-                tennis court, or swimming pool, we have the right place for you.
-              </Paragraph>
-            </Card>
-          </Col>
+              <Text className="text-gray-600">{milestone.title}</Text>
+              <Text className="text-gray-500">{milestone.description}</Text>
+            </Timeline.Item>
+          ))}
+        </Timeline>
+      </div>
 
-          {/*====================== Mission Statement================ */}
-          <Col xs={24} md={12}>
-            <Image
-              src={image1}
-              alt="Sports Facility"
-              style={{
-                borderRadius: "10px",
-                width: "100%",
-                maxHeight: "300px",
-                objectFit: "cover",
-              }}
-            />
-          </Col>
-          <Col xs={24} md={12}>
-            <Card
-              bordered={false}
-              style={{
-                borderRadius: "10px",
-                padding: "20px",
-                boxShadow: "0 4px 12px rgba(0, 0, 0, 0.1)",
-              }}
-            >
-              <Title level={4} style={{ color: "#00725A" }}>
-                Our Mission
-              </Title>
-              <Paragraph>
-                Our mission is to provide a seamless booking experience for
-                sports enthusiasts, promoting active lifestyles by connecting
-                people to quality sports facilities. We aim to make sports more
-                accessible to everyone.
-              </Paragraph>
-              <Button
-                type="primary"
-                style={{
-                  backgroundColor: "#00725A",
-                  borderColor: "#00725A",
-                  color: "white",
-                }}
-              >
-                Explore Facilities
-              </Button>
-            </Card>
-          </Col>
-
-          {/* =====================Vision Section ==================*/}
-          <Col span={24}>
-            <Card
-              bordered={false}
-              style={{
-                borderRadius: "10px",
-                padding: "20px",
-                marginTop: "20px",
-                boxShadow: "0 4px 12px rgba(0, 0, 0, 0.1)",
-              }}
-            >
-              <Row gutter={[16, 16]}>
-                <Col xs={24} md={12}>
-                  <Title level={4} style={{ color: "#00725A" }}>
-                    Our Vision
-                  </Title>
-                  <Paragraph>
-                    We envision a world where everyone has access to the sports
-                    facilities they need, regardless of location. By making
-                    bookings easier, we hope to inspire more people to
-                    participate in sports and enjoy a healthier lifestyle.
-                  </Paragraph>
-                </Col>
-                <Col xs={24} md={12}>
-                  <Image
-                    src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQ_d-wRErGFunnl5ZnDN4_H5xApabswm7HH8Q&s"
-                    alt="Active Lifestyle"
-                    style={{
-                      borderRadius: "10px",
-                      width: "100%",
-                      maxHeight: "300px",
-                      objectFit: "cover",
-                    }}
-                  />
-                </Col>
-              </Row>
-            </Card>
-          </Col>
-
-          {/* Team Section */}
-          <Col span={24}>
-            <Card
-              bordered={false}
-              style={{
-                borderRadius: "10px",
-                padding: "20px",
-                marginTop: "20px",
-                boxShadow: "0 4px 12px rgba(0, 0, 0, 0.1)",
-              }}
-            >
-              <Title
-                level={2}
-                style={{ color: "#00725A", textAlign: "center" }}
-              >
-                Our Team
-              </Title>
-              <Row gutter={[16, 16]} justify="center">
-                <Col xs={24} md={8}>
-                  <Card
-                    hoverable
-                    cover={<Image src={team1} alt="Team Member" />}
-                    bordered={false}
-                  >
-                    <Title
-                      level={5}
-                      style={{ color: "#00725A", textAlign: "center" }}
-                    >
-                      John Doe
-                    </Title>
-                    <Paragraph style={{ textAlign: "center" }}>
-                      CEO & Founder
-                    </Paragraph>
-                  </Card>
-                </Col>
-                <Col xs={24} md={8}>
-                  <Card
-                    hoverable
-                    cover={<Image src={team2} alt="Team Member" />}
-                    bordered={false}
-                  >
-                    <Title
-                      level={5}
-                      style={{ color: "#00725A", textAlign: "center" }}
-                    >
-                      Jane Smith
-                    </Title>
-                    <Paragraph style={{ textAlign: "center" }}>CTO</Paragraph>
-                  </Card>
-                </Col>
-                <Col xs={24} md={8}>
-                  <Card
-                    hoverable
-                    cover={<Image src={team3} alt="Team Member" />}
-                    bordered={false}
-                  >
-                    <Title
-                      level={5}
-                      style={{ color: "#00725A", textAlign: "center" }}
-                    >
-                      Alice Johnson
-                    </Title>
-                    <Paragraph style={{ textAlign: "center" }}>
-                      Marketing Director
-                    </Paragraph>
-                  </Card>
-                </Col>
-              </Row>
-            </Card>
-          </Col>
-
-          {/* History & Milestones Section */}
-          <Col span={24}>
-            <Card
-              bordered={false}
-              style={{
-                borderRadius: "10px",
-                padding: "20px",
-                marginTop: "20px",
-                boxShadow: "0 4px 12px rgba(0, 0, 0, 0.1)",
-              }}
-            >
-              <Row gutter={[16, 16]}>
-                <Col xs={24} md={12}>
-                  <Title
-                    level={4}
-                    style={{ color: "#00725A", textAlign: "center" }}
-                  >
-                    Our History & Milestones
-                  </Title>
-                  <Timeline style={{ marginTop: "20px" }}>
-                    <Timeline.Item color="green">
-                      <Title level={5} style={{ color: "#00725A" }}>
-                        2015
-                      </Title>
-                      <Paragraph>
-                        Company founded and platform launched.
-                      </Paragraph>
-                    </Timeline.Item>
-                    <Timeline.Item color="green">
-                      <Title level={5} style={{ color: "#00725A" }}>
-                        2017
-                      </Title>
-                      <Paragraph>Expanded to 100 sports facilities.</Paragraph>
-                    </Timeline.Item>
-                    <Timeline.Item color="green">
-                      <Title level={5} style={{ color: "#00725A" }}>
-                        2020
-                      </Title>
-                      <Paragraph>Reached 10,000 registered users.</Paragraph>
-                    </Timeline.Item>
-                    <Timeline.Item color="green">
-                      <Title level={5} style={{ color: "#00725A" }}>
-                        2023
-                      </Title>
-                      <Paragraph>
-                        Launched mobile app for easier booking.
-                      </Paragraph>
-                    </Timeline.Item>
-                  </Timeline>
-                </Col>
-                <Col xs={24} md={12}>
-                  <Image
-                    src={mileStoneSuccess}
-                    alt="Company Milestones"
-                    style={{
-                      borderRadius: "10px",
-                      width: "100%",
-                      maxHeight: "300px",
-                      objectFit: "cover",
-                    }}
-                  />
-                </Col>
-              </Row>
-            </Card>
-          </Col>
-
-          {/* Contact Information Section */}
-          <Col span={24}>
-            <Card
-              bordered={false}
-              style={{
-                borderRadius: "10px",
-                padding: "20px",
-                marginTop: "20px",
-                boxShadow: "0 4px 12px rgba(0, 0, 0, 0.1)",
-              }}
-            >
-              <Title
-                level={4}
-                style={{ color: "#00725A", textAlign: "center" }}
-              >
-                Contact Us
-              </Title>
-              <Row gutter={[16, 16]} justify="center">
-                <Col xs={24} md={8}>
-                  <Card bordered={false}>
-                    <MailOutlined
-                      style={{ fontSize: "24px", color: "#00725A" }}
-                    />
-                    <Paragraph style={{ marginTop: "10px", color: "#00725A" }}>
-                      Email: info@sportsbooking.com
-                    </Paragraph>
-                  </Card>
-                </Col>
-                <Col xs={24} md={8}>
-                  <Card bordered={false}>
-                    <PhoneOutlined
-                      style={{ fontSize: "24px", color: "#00725A" }}
-                    />
-                    <Paragraph style={{ marginTop: "10px", color: "#00725A" }}>
-                      Phone: +1 (800) 123-4567
-                    </Paragraph>
-                  </Card>
-                </Col>
-                <Col xs={24} md={8}>
-                  <Card bordered={false}>
-                    <EnvironmentOutlined
-                      style={{ fontSize: "24px", color: "#00725A" }}
-                    />
-                    <Paragraph style={{ marginTop: "10px", color: "#00725A" }}>
-                      Address: 1234 Sports Ave, New York, NY 10001
-                    </Paragraph>
-                  </Card>
-                </Col>
-              </Row>
-            </Card>
-          </Col>
-        </Row>
-      </Content>
-
-      {/* Footer Section */}
-      <Footer
-        style={{
-          background: "#00725A",
-          textAlign: "center",
-          color: "white",
-          padding: "20px 50px",
-        }}
-      >
-        Sports Facility Booking Platform ©2024 Created by Nazmul Hasan Shadin
-      </Footer>
-      <ScrollToTopButton></ScrollToTopButton>
-    </Layout>
+      {/* Contact Information */}
+      <div className="bg-[#49e0fb] py-10 text-white">
+        <div className="max-w-4xl mx-auto px-4 md:px-6 text-center">
+          <Title className="text-3xl font-semibold text-white">
+            Contact Information
+          </Title>
+          <Space size="large" direction="vertical" className="mt-4">
+            <div className="flex items-center justify-center">
+              <EnvironmentOutlined className="text-2xl mr-2" />
+              <Text>123 Sports Ave, Sportstown, ST 45678</Text>
+            </div>
+            <div className="flex items-center justify-center">
+              <PhoneOutlined className="text-2xl mr-2" />
+              <Text>+1 (234) 567-8901</Text>
+            </div>
+            <div className="flex items-center justify-center">
+              <MailOutlined className="text-2xl mr-2" />
+              <Text>contact@sportyra.com</Text>
+            </div>
+          </Space>
+        </div>
+      </div>
+    </div>
   );
 };
 
-export default AboutPage;
+export default AboutUs;

@@ -16,6 +16,7 @@ import { adminPath } from "../../routes/route.admin";
 import ProtectedRoute from "./ProtectedRoute";
 import DashboardLayout from "./DashboardLayout";
 import { useEffect } from "react";
+import userImage from "../../assets/imageDashboard.jpg";
 
 const userRole = {
   USER: "user",
@@ -23,11 +24,8 @@ const userRole = {
 };
 
 const SideBarItem = () => {
-
   const token = useAppSelector(selectCurrentToken);
   let user;
-
-  
 
   if (token) {
     user = VerifyToken(token);
@@ -41,7 +39,6 @@ const SideBarItem = () => {
       sidebarItems = [
         ...sidebarItems,
         { key: "3", label: <NavLink to={"/"}>Home</NavLink> },
-  
       ];
 
       break;
@@ -68,12 +65,11 @@ const SideBarItem = () => {
       }}
       onCollapse={(collapsed, type) => {
         console.log(collapsed, type);
-      }}
-    >
+      }}>
       <div style={{ padding: "20px", textAlign: "center" }}>
         <img
           className="rounded-full"
-          src="https://avatars.githubusercontent.com/u/111014373?v=4"
+          src={userImage}
           alt="User"
           style={{ width: "100px", marginBottom: "10px" }}
         />
@@ -84,6 +80,7 @@ const SideBarItem = () => {
         mode="inline"
         defaultSelectedKeys={["4"]}
         items={sidebarItems}
+        // background color change
       />
     </Sider>
   );

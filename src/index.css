@@ -3,11 +3,11 @@
 @tailwind utilities;
 
 .pColor {
-  @apply text-[#8EF04E];
+  @apply text-[#49E0FB];
 }
 
 .my-primary-btn {
-  @apply bg-gradient-to-r from-[#8EF04E] to-[#80e73c] hover:from-green-500 hover:to-green-600 text-white font-bold py-2 px-4 rounded transition;
+  @apply bg-gradient-to-r from-[#49E0FB] to-[#34c7e0] hover:from-[#1b7585] hover:to-[#128296] text-white font-bold py-2 px-4 rounded transition;
 }
 .my-primary-btn-outline {
   @apply border border-[#49E0FB] text-[#49E0FB] bg-white hover:bg-[#49E0FB]  hover:text-white text-sm font-bold py-2 px-4 rounded transition-all;

@@ -1,0 +1,17 @@
+[
+  {
+    "name": "John Doe",
+    "feedback": "Great facilities and friendly staff! Had a fantastic experience booking a court.",
+    "rating": 5
+  },
+  {
+    "name": "Jane Smith",
+    "feedback": "The booking process was smooth, and the facilities were top-notch.",
+    "rating": 4
+  },
+  {
+    "name": "Mike Johnson",
+    "feedback": "I love the variety of sports available. Will definitely come back!",
+    "rating": 5
+  }
+]

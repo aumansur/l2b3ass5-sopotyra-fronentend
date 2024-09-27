@@ -1,94 +1,74 @@
-import React, { useState, useEffect } from "react";
-import { FaChevronLeft, FaChevronRight, FaQuoteLeft } from "react-icons/fa";
-import imag1 from '../../../assets/images/man.jpeg';
+import React from "react";
+import { Carousel, Typography, Card } from "antd";
+import "antd/dist/reset.css";
+import { Color } from "antd/es/color-picker";
 
-const testimonials = [
+const { Title, Text } = Typography;
+
+const testimonialsData = [
   {
+    id: 1,
+    image:
+      "https://t3.ftcdn.net/jpg/02/00/90/24/360_F_200902415_G4eZ9Ok3Ypd4SZZKjc8nqJyFVp1eOD6V.jpg",
     name: "John Doe",
-    feedback: "Our startup switched to work from home due to the virus. Butterfly helped us provide laptops to our entire staff.",
-    date: "06-15-20",
-    image: imag1,
-    title: "Remote Work Setup",
+    feedback:
+      "The sports facilities are amazing! Booking was easy and the staff was very professional. Highly recommend it to anyone.",
   },
   {
+    id: 2,
+    image:
+      "https://media.istockphoto.com/id/1150254232/photo/headshot-of-smiling-european-caucasian-business-man-with-haircut-and-glasses-isolated-on.jpg?s=612x612&w=0&k=20&c=-gJPo-MGTk2lGTQ0rtLn7dRZHBUV8UymdcRH1b1ye9A=",
     name: "Jane Smith",
-    feedback: "I rented a camera from Butterfly for my camping trip on the new years. The product was of the best quality and properly sanitized. I was able to capture all the memories.",
-    date: "12-29-19",
-    image: "https://avatars.githubusercontent.com/u/111014373?s=400&u=ba39b33fa6e1dae3e5e46cb00eb9c986b03a1439&v=4",
-    title: "Camping Memories",
+    feedback:
+      "Had a fantastic experience! The venue was clean and well-maintained. Booking my slot was hassle-free!",
+  },
+  {
+    id: 3,
+    image:
+      "https://thumbs.dreamstime.com/b/ill-take-my-hat-off-you-studio-shot-beautiful-young-woman-smiling-against-brown-background-ill-take-my-hat-off-you-267544065.jpg",
+    name: "Michael Jemmy",
+    feedback:
+      "Top-notch facilities and great customer service. Will definitely be using this service again!",
   },
 ];
 
-const Testimonial = () => {
-  const [current, setCurrent] = useState(0);
+const styles = {};
 
-  const nextTestimonial = () => {
-    setCurrent((prev) => (prev === testimonials.length - 1 ? 0 : prev + 1));
-  };
-
-  const prevTestimonial = () => {
-    setCurrent((prev) => (prev === 0 ? testimonials.length - 1 : prev - 1));
-  };
-
-  useEffect(() => {
-    const interval = setInterval(nextTestimonial, 5000); // Auto slide every 5 seconds
-    return () => clearInterval(interval); // Clear interval on component unmount
-  }, []);
-
+const TestimonialsSlider: React.FC = () => {
   return (
-    <div className="flex flex-col items-center bg-gray-100 py-10 px-4 gap-8 relative">
-      {/* Title Section */}
-      <h2 className="text-3xl font-bold text-[#00725A] mb-8">
-        What Our Clients Say
-      </h2>
+    <div className="py-10 bg-[#F3F4F6]">
+      <Title className="text-center text-3xl  font-semibold mb-10">
+        <span className="text-[#49E0fb] ">Customer Reviews</span>
+      </Title>
 
-      {/* Testimonial Section */}
-      <div className="flex flex-col lg:flex-row items-center justify-center gap-8 w-full">
-        {/* Left Section - Text Review */}
-        <div className="relative bg-white p-6 rounded-lg shadow-md w-full lg:w-1/2">
-          <FaQuoteLeft className="text-3xl text-[#00725A] absolute top-4 left-4" />
-          <div className="mt-8">
-            <p className="text-gray-700 mb-4">{testimonials[current].feedback}</p>
-            <p className="font-semibold text-gray-900">
-              {testimonials[current].name}
-            </p>
+      <Carousel
+        arrows={true}
+        infinite={true}
+        autoplay
+        style={styles}
+        className="w-full max-w-4xl mx-auto bg-gray-">
+        {testimonialsData.map((testimonial) => (
+          <div
+            key={testimonial.id}
+            className="flex flex-col items-center text-center">
+            <Card className="w-full bg-gray-200 rounded-lg shadow-lg p-6">
+              <img
+                src={testimonial.image}
+                alt={testimonial.name}
+                className="w-24 h-24 rounded-full mb-4 mx-auto"
+              />
+              <Title level={4} className="font-medium">
+                {testimonial.name}
+              </Title>
+              <Text className="italic text-gray-600 mt-2">
+                {testimonial.feedback}
+              </Text>
+            </Card>
           </div>
-
-          <div className="absolute flex justify-between w-full top-1/2 transform -translate-y-1/2 px-4">
-            <button
-              onClick={prevTestimonial}
-              className="text-[#00725A] hover:text-orange-600 transition-colors"
-            >
-              <FaChevronLeft size={24} />
-            </button>
-            <button
-              onClick={nextTestimonial}
-              className="text-[#00725A] hover:text-orange-600 transition-colors"
-            >
-              <FaChevronRight size={24} />
-            </button>
-          </div>
-        </div>
-
-        {/* Right Section - Image and Details */}
-        <div className="bg-white p-6 rounded-lg shadow-md w-full lg:w-1/2 flex items-center justify-center">
-          <div>
-            <img
-              src={testimonials[current].image}
-              alt={testimonials[current].title}
-              className="rounded-lg w-full h-56 object-cover border-4 border-[#00725A]"
-            />
-            <p className="text-center font-medium text-[#00725A] mt-4">
-              {testimonials[current].title}
-            </p>
-            <p className="text-center text-sm text-gray-600 mt-2">
-              - {testimonials[current].name}, {testimonials[current].date}
-            </p>
-          </div>
-        </div>
-      </div>
+        ))}
+      </Carousel>
     </div>
   );
 };
 
-export default Testimonial;
+export default TestimonialsSlider;

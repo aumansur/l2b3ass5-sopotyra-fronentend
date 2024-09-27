@@ -33,8 +33,8 @@ const Banner: React.FC = () => (
             Where Sportsmanship Meets Top Facilities
           </h3>
           <button className="my-primary-btn-outline">
-            <NavLink className="hover:text-white" to="/products">
-              See more
+            <NavLink className="hover:text-white text-sm" to="/offered">
+              Book Now
             </NavLink>
           </button>
         </div>

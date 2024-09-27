@@ -1,0 +1,9 @@
+/* footer.css */
+@media (max-width: 576px) {
+  .ant-typography h5 {
+    font-size: 16px; /* Adjust heading size for mobile */
+  }
+  .ant-row {
+    text-align: center; /* Center content for mobile */
+  }
+}

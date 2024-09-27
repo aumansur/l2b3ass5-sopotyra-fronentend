@@ -36,15 +36,14 @@ const DashboardLayout: React.FC = () => {
         <Header
           style={{
             padding: 8,
-            background: "#00725A", // Primary color
+            background: "#49e0fb", // Primary color
             display: "flex",
             alignItems: "center",
             justifyContent: "space-between",
             position: "sticky",
             top: 0,
             zIndex: 1000,
-          }}
-        >
+          }}>
           {/* Search on the left side */}
           <Search
             placeholder="Search..."
@@ -68,17 +67,15 @@ const DashboardLayout: React.FC = () => {
           </div>
         </Header>
         <Content style={{ margin: "24px 16px 0" }}>
-          
           <div
             style={{
               padding: 24,
               minHeight: 360,
-              background: colorBgContainer,
+
+              background: "#49e0fb",
               borderRadius: borderRadiusLG,
-            }}
-          >
+            }}>
             <Outlet />
-         
           </div>
         </Content>
         <Footer style={{ textAlign: "center" }}>
