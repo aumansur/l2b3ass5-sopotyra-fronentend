@@ -1,7 +1,17 @@
+/* eslint-disable @typescript-eslint/no-unused-vars */
 import React, { useState } from "react";
-import { Button, Col, Form, Modal, Popconfirm, Row, Table, Typography } from "antd";
+import {
+  Button,
+  Col,
+  Form,
+  Modal,
+  Popconfirm,
+  Row,
+  Table,
+  Typography,
+} from "antd";
 import type { ColumnsType } from "antd/es/table";
-import { useGetUsersBookinsQuery } from "../../../redux/feature/Bookings/auth.bookings.api";
+
 import {
   useGetAllFacilityQuery,
   useRemoveFacilityMutation,
@@ -13,6 +23,7 @@ import SFInput from "../../../components/form/SFInput/SFinput";
 import { toast } from "sonner";
 import { FieldValues, SubmitHandler } from "react-hook-form";
 import { TFacility } from "../../../types";
+import { useGetUsersBookingQuery } from "../../../redux/feature/Bookings/auth.bookings.api";
 
 const { Title } = Typography;
 
@@ -27,18 +38,19 @@ interface FacilityType {
 }
 
 const Facility: React.FC = () => {
-  const [selectedFacility, setSelectedFacility] = useState<FacilityType | null>(null);
+  const [selectedFacility, setSelectedFacility] = useState<FacilityType | null>(
+    null
+  );
   const [isModalOpen, setIsModalOpen] = useState(false);
 
   const { data: facility } = useGetAllFacilityQuery({});
   const [removeFacility] = useRemoveFacilityMutation();
-  const { data: allBookings, refetch } = useGetUsersBookinsQuery(undefined);
+  const { data: allBookings, refetch } = useGetUsersBookingQuery(undefined);
 
   const handleDelete = async (id: string) => {
     try {
       await removeFacility(id).unwrap();
       toast.success("Facility deleted successfully");
-      
     } catch (error) {
       toast.error("Failed to delete facility");
       // console.error("Failed to delete facility:", error.message);
@@ -64,7 +76,9 @@ const Facility: React.FC = () => {
       dataIndex: "pricePerHour",
       key: "pricePerHour",
       width: 200,
-      render: (text: number) => <span style={{ color: "orange" }}>${text}</span>,
+      render: (text: number) => (
+        <span style={{ color: "orange" }}>${text}</span>
+      ),
     },
     {
       title: "Action",
@@ -74,8 +88,7 @@ const Facility: React.FC = () => {
         <div className="flex gap-4">
           <Popconfirm
             title="Are you sure you want to delete this item?"
-            onConfirm={() => handleDelete(item.key)}
-          >
+            onConfirm={() => handleDelete(item.key)}>
             <FaTrash style={{ color: "orange" }} className="text-xl" />
           </Popconfirm>
           <FaEdit
@@ -92,19 +105,38 @@ const Facility: React.FC = () => {
   ];
 
   const data: FacilityType[] =
-    facility?.data.map(({ location, name, pricePerHour, _id, description, image }: TFacility) => ({
-      key: _id,
-      description,
-      location,
-      name,
-      pricePerHour,
-      image,
-    })) || [];
+    facility?.data.map(
+      ({
+        location,
+        name,
+        pricePerHour,
+        _id,
+        description,
+        image,
+      }: TFacility) => ({
+        key: _id,
+        description,
+        location,
+        name,
+        pricePerHour,
+        image,
+      })
+    ) || [];
 
   return (
-    <div style={{ overflowX: "auto", padding: "20px", backgroundColor: "#f9f9f9" }}>
+    <div
+      style={{
+        overflowX: "auto",
+        padding: "20px",
+        backgroundColor: "#f9f9f9",
+      }}>
       <Title level={3}>All Facilities</Title>
-      <Table columns={columns} dataSource={data} pagination={false} scroll={{ x: "max-content" }} />
+      <Table
+        columns={columns}
+        dataSource={data}
+        pagination={false}
+        scroll={{ x: "max-content" }}
+      />
       {selectedFacility && (
         <FacilityEditModal
           isOpen={isModalOpen}
@@ -126,7 +158,7 @@ interface FacilityEditModalProps {
   onCancel: () => void;
   facilityData: {
     _id: string;
-    key:string;
+    key: string;
     name: string;
     description: string;
     pricePerHour: number;
@@ -141,8 +173,8 @@ const FacilityEditModal: React.FC<FacilityEditModalProps> = ({
   onCancel,
   facilityData,
 }) => {
-  console.log(facilityData,'iam facility data bro modal');
-  
+  console.log(facilityData, "iam facility data bro modal");
+
   const [updateFacility] = useUpdateFacilityMutation();
 
   const onSubmit: SubmitHandler<FieldValues> = async (data) => {
@@ -167,7 +199,11 @@ const FacilityEditModal: React.FC<FacilityEditModalProps> = ({
   return (
     <Modal title="Edit Facility" open={isOpen} onOk={onOk} onCancel={onCancel}>
       <Row justify="center">
-        <Col lg={24} className="p-8 shadow-lg rounded-lg bg-white" sm={23} md={14}>
+        <Col
+          lg={24}
+          className="p-8 shadow-lg rounded-lg bg-white"
+          sm={23}
+          md={14}>
           <Title level={3}>Edit Facility</Title>
           <SFform onSubmit={onSubmit}>
             <Form.Item>
@@ -206,6 +242,16 @@ const FacilityEditModal: React.FC<FacilityEditModalProps> = ({
                 name="image"
               />
             </Form.Item>
+            {/* upload image  */}
+            {/* <Form.Item>
+              <SFInput
+                defaultValue={facilityData?.image}
+                type="text"
+                label="Image"
+                id="Image"
+                name="image"
+              />
+            </Form.Item> */}
             <Form.Item>
               <SFInput
                 defaultValue={facilityData?.location}

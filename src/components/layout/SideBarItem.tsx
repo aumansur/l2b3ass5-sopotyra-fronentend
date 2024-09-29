@@ -16,7 +16,6 @@ import { adminPath } from "../../routes/route.admin";
 import ProtectedRoute from "./ProtectedRoute";
 import DashboardLayout from "./DashboardLayout";
 import { useEffect } from "react";
-import userImage from "../../assets/imageDashboard.jpg";
 
 const userRole = {
   USER: "user",
@@ -66,14 +65,7 @@ const SideBarItem = () => {
       onCollapse={(collapsed, type) => {
         console.log(collapsed, type);
       }}>
-      <div style={{ padding: "20px", textAlign: "center" }}>
-        <img
-          className="rounded-full"
-          src={userImage}
-          alt="User"
-          style={{ width: "100px", marginBottom: "10px" }}
-        />
-      </div>
+      <div style={{ padding: "20px", textAlign: "center" }}></div>
       <div className="demo-logo-vertical" />
       <Menu
         theme="dark"

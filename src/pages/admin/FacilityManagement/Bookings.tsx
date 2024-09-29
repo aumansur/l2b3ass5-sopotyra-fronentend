@@ -1,7 +1,7 @@
 import React from "react";
 import { Button, Popconfirm, Table } from "antd";
+import { useGetUsersBookingQuery } from "../../../redux/feature/Bookings/auth.bookings.api";
 import type { TableColumnsType } from "antd";
-import { useGetAllBookingsQuery, useGetUsersBookinsQuery } from "../../../redux/feature/Bookings/auth.bookings.api";
 import { TBooking } from "../../../types/booking.types";
 
 interface DataType {
@@ -42,7 +42,7 @@ const columns: TableColumnsType<DataType> = [
     dataIndex: "payableAmount",
     key: "payableAmount",
     width: 200,
-    render: (text) => <span style={{ color: "orange" }}>${text}</span>, 
+    render: (text) => <span style={{ color: "orange" }}>${text}</span>,
   },
   {
     title: "Action",
@@ -51,9 +51,10 @@ const columns: TableColumnsType<DataType> = [
     render: (_, record) => (
       <Popconfirm
         title="Are you sure you want to delete this item?"
-        onConfirm={() => console.log(record)}
-      >
-        <Button type="link" style={{ color: "red" }}>Delete</Button>
+        onConfirm={() => console.log(record)}>
+        <Button type="link" style={{ color: "red" }}>
+          Delete
+        </Button>
       </Popconfirm>
     ),
     width: 100,
@@ -61,23 +62,36 @@ const columns: TableColumnsType<DataType> = [
 ];
 
 const Bookings: React.FC = () => {
-  const { data: allBookings } = useGetAllBookingsQuery(undefined);
+  const { data: allBookings } = useGetUsersBookingQuery(undefined);
 
   const data: DataType[] =
-    allBookings?.data.map(({ facility,date ,startTime,endTime, payableAmount,_id }:TBooking) => ({
-      key:_id,
-      ...facility,
-      startTime,
-      endTime,
-      date,
-      payableAmount,
-    })) || [];
+    allBookings?.data.map(
+      ({
+        facility,
+        date,
+        startTime,
+        endTime,
+        payableAmount,
+        _id,
+      }: TBooking) => ({
+        key: _id,
+        ...facility,
+        startTime,
+        endTime,
+        date,
+        payableAmount,
+      })
+    ) || [];
 
-    console.log(allBookings,'iam admin bookings');
-    
+  console.log(allBookings, "iam admin bookings");
 
   return (
-    <div style={{ overflowX: "auto", padding: "20px", backgroundColor: "#f9f9f9" }}>
+    <div
+      style={{
+        overflowX: "auto",
+        padding: "20px",
+        backgroundColor: "#f9f9f9",
+      }}>
       <Table
         columns={columns}
         dataSource={data}

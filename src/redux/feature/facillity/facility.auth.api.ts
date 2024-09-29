@@ -3,21 +3,18 @@ import baseApi from "../../api/baseApi";
 const facilityApi = baseApi.injectEndpoints({
   endpoints: (builder) => ({
     getAllFacility: builder.query({
-      query: ({searchTerm,limit,page,sort}) => {
-
+      query: ({ searchTerm, limit, page, sort }) => {
         return {
           url: "/facility",
           method: "GET",
-          params:{searchTerm,limit,page,sort}
+          params: { searchTerm, limit, page, sort },
         };
       },
-      providesTags:['facility']
+      providesTags: ["facility"],
     }),
 
     getSingleFacility: builder.query({
       query: (facilityId) => {
-       
-
         return {
           url: `/facility/${facilityId}`,
           method: "GET",
@@ -25,57 +22,55 @@ const facilityApi = baseApi.injectEndpoints({
       },
     }),
 
-
     checkFacilityAvailability: builder.query({
-        query: ({date,facility}) => {
-      
-         
-  
-          return {
-            url: "/check-availability",
-            method: "GET",
-            params: {date:date , facility:facility}
-          };
-        },
-      }),
+      query: ({ date, facility }) => {
+        return {
+          url: "/check-availability",
+          method: "GET",
+          params: { date: date, facility: facility },
+        };
+      },
+    }),
 
-      createFacility: builder.mutation({
-        query: (data) => {
-        
-         
-  
-          return {
-            url: `/facility`,
-            method: "POST",
-            body:data
-          };
-        },
-      }),
+    createFacility: builder.mutation({
+      query: (data) => {
+        // data should be FormData
+        return {
+          url: `/facility`,
+          method: "POST",
+          body: data,
+        };
+      },
+    }),
 
-      updateFacility: builder.mutation({
-        query: ({id,data}) => {
-         console.log(id,data);
-         
-         
-  
-          return {
-            url: `/facility/${id}`,
-            method: "PUT",
-            body:data
-          };
-        },
+    updateFacility: builder.mutation({
+      query: ({ id, data }) => {
+        // data should be FormData in case of image upload
+        return {
+          url: `/facility/${id}`,
+          method: "PUT",
+          body: data,
+        };
+      },
+      invalidatesTags: ["facility"],
+    }),
 
-        invalidatesTags: ['facility']
+    removeFacility: builder.mutation({
+      query: (id) => ({
+        url: `/facility/${id}`,
+        method: "DELETE",
       }),
-      removeFacility:builder.mutation({
-        query:(id)=>({
-            url:`/facility/${id}`,
-            method:'DELETE',
-           
-        }),
-        invalidatesTags: ['facility']
-    })
+      invalidatesTags: ["facility"],
+    }),
   }),
 });
 
-export const { useLazyGetAllFacilityQuery,useGetAllFacilityQuery,useCheckFacilityAvailabilityQuery,useUpdateFacilityMutation,useRemoveFacilityMutation ,useGetSingleFacilityQuery,useCreateFacilityMutation} = facilityApi;
+export const {
+  useLazyGetAllFacilityQuery,
+  useGetAllFacilityQuery,
+  useCheckFacilityAvailabilityQuery,
+  useUpdateFacilityMutation,
+  useRemoveFacilityMutation,
+  useGetSingleFacilityQuery,
+  useCreateFacilityMutation,
+} = facilityApi;

@@ -1,184 +1,110 @@
 import React from "react";
+import { Form, Input, Button, Typography, Space } from "antd";
 import {
-  Form,
-  Input,
-  Button,
-  Typography,
-  Layout,
-  Col,
-  Row,
-  Space,
-  Card,
-} from "antd";
-import { MailOutlined, PhoneOutlined, GlobalOutlined } from "@ant-design/icons";
-import ScrollToTopButton from "../components/ui/ScrollToTop/ScrollToTop";
+  MailOutlined,
+  PhoneOutlined,
+  EnvironmentOutlined,
+} from "@ant-design/icons";
 
-const { Title, Text, Paragraph } = Typography;
-const { Header, Content, Footer } = Layout;
+const { Title, Text } = Typography;
+const { TextArea } = Input;
 
-const ContactPage = () => {
+const ContactUs: React.FC = () => {
+  // Form submission handler
+  const onFinish = (values: any) => {
+    console.log("Form values: ", values);
+    // Handle form submission, e.g., send to API or backend.
+  };
+
   return (
-    <Layout>
-      {/* Header Section */}
-      <Header style={{ background: "#00725A", padding: "0 20px" }}>
-        <Title
-          level={2}
-          style={{ color: "white", margin: 0, textAlign: "center" }}
-        >
+    <div className="py-10 bg-gray-100">
+      {/* Contact Form Section */}
+      <div className="max-w-4xl mx-auto px-4 md:px-6 mb-10">
+        <Title className="text-center text-3xl font-semibold text-[#49e0fb] mb-6">
           Get in Touch
         </Title>
-      </Header>
+        <Form
+          layout="vertical"
+          onFinish={onFinish}
+          className="bg-white p-6 shadow-lg rounded-lg">
+          <Form.Item
+            label="Name"
+            name="name"
+            rules={[{ required: true, message: "Please enter your name" }]}>
+            <Input placeholder="Your Name" />
+          </Form.Item>
 
-      {/* Main Content Section */}
-      <Content style={{ padding: "40px", background: "#f0f2f5" }}>
-        <Row gutter={[32, 32]} justify="center">
-          {/* Contact Form */}
-          <Col xs={24} md={12}>
-            <Card
-              bordered={false}
-              style={{
-                borderRadius: "10px",
-                padding: "20px",
-                boxShadow: "0 4px 12px rgba(0, 0, 0, 0.1)",
-              }}
-            >
-              <Title
-                level={3}
-                style={{ color: "#00725A", marginBottom: "16px" }}
-              >
-                Send Us a Message
-              </Title>
-              <Form layout="vertical">
-                <Form.Item
-                  label="Name"
-                  name="name"
-                  rules={[
-                    { required: true, message: "Please enter your name" },
-                  ]}
-                >
-                  <Input placeholder="Your Name" />
-                </Form.Item>
-                <Form.Item
-                  label="Email"
-                  name="email"
-                  rules={[
-                    {
-                      required: true,
-                      type: "email",
-                      message: "Please enter a valid email",
-                    },
-                  ]}
-                >
-                  <Input placeholder="Your Email" />
-                </Form.Item>
-                <Form.Item
-                  label="Subject"
-                  name="subject"
-                  rules={[
-                    {
-                      required: true,
-                    
-                      message: "Please enter a valid Subejct",
-                    },
-                  ]}
-                >
-                  <Input placeholder="Your Email" />
-                </Form.Item>
-                <Form.Item
-                  label="Message"
-                  name="message"
-                  rules={[
-                    { required: true, message: "Please enter your message" },
-                  ]}
-                >
-                  <Input.TextArea rows={4} placeholder="Your Message" />
-                </Form.Item>
-                <Form.Item>
-                  <Button
-                    type="primary"
-                    style={{
-                      backgroundColor: "#00725A",
-                      borderColor: "#00725A",
-                      width: "100%",
-                    }}
-                  >
-                    Send Message
-                  </Button>
-                </Form.Item>
-              </Form>
-            </Card>
-          </Col>
+          <Form.Item
+            label="Email"
+            name="email"
+            rules={[
+              { required: true, message: "Please enter your email" },
+              { type: "email", message: "Please enter a valid email" },
+            ]}>
+            <Input placeholder="Your Email" />
+          </Form.Item>
 
-          {/* Contact Information */}
-          <Col xs={24} md={10}>
-            <Card
-              bordered={false}
-              style={{
-                borderRadius: "10px",
-                padding: "20px",
-                background: "#fff",
-                boxShadow: "0 4px 12px rgba(0, 0, 0, 0.1)",
-                textAlign: "center",
-              }}
-            >
-              <Title
-                level={3}
-                style={{ color: "#00725A", marginBottom: "16px" }}
-              >
-                Contact Information
-              </Title>
-              <Paragraph>
-                We'd love to hear from you! Reach out to us through any of the
-                following means, and we'll get back to you as soon as possible.
-              </Paragraph>
-              <Space
-                direction="vertical"
-                size="large"
-                style={{ width: "100%" }}
-              >
-                <div>
-                  <MailOutlined
-                    style={{ color: "#00725A", fontSize: "24px" }}
-                  />
-                  <Text style={{ marginLeft: "10px", color: "#333" }}>
-                    contact@example.com
-                  </Text>
-                </div>
-                <div>
-                  <PhoneOutlined
-                    style={{ color: "#00725A", fontSize: "24px" }}
-                  />
-                  <Text style={{ marginLeft: "10px", color: "#333" }}>
-                    +123 456 7890
-                  </Text>
-                </div>
-                <div>
-                  <GlobalOutlined
-                    style={{ color: "#00725A", fontSize: "24px" }}
-                  />
-                  <Text style={{ marginLeft: "10px", color: "#333" }}>
-                    www.example.com
-                  </Text>
-                </div>
-              </Space>
-            </Card>
-          </Col>
-        </Row>
-        <ScrollToTopButton></ScrollToTopButton>
-      </Content>
+          <Form.Item
+            label="Subject"
+            name="subject"
+            rules={[{ required: true, message: "Please enter a subject" }]}>
+            <Input placeholder="Subject" />
+          </Form.Item>
 
-      {/* Footer Section */}
-      <Footer
-        style={{
-          textAlign: "center",
-          backgroundColor: "#00725A",
-          color: "white",
-        }}
-      >
-        © 2024 Your Company. All Rights Reserved.
-      </Footer>
-    </Layout>
+          <Form.Item
+            label="Message"
+            name="message"
+            rules={[{ required: true, message: "Please enter your message" }]}>
+            <TextArea rows={4} placeholder="Your Message" />
+          </Form.Item>
+
+          <Form.Item className="text-center">
+            <Button type="primary" htmlType="submit" className="bg-[#49e0fb]">
+              Submit
+            </Button>
+          </Form.Item>
+        </Form>
+      </div>
+
+      {/* Map Integration Section (Updated with Sirajganj location) */}
+      <div className="max-w-4xl mx-auto px-4 md:px-6 mb-10">
+        <Title className="text-center text-2xl font-semibold text-[#49e0fb] mb-4">
+          Our Location
+        </Title>
+        <div className="w-full h-64 bg-gray-200 rounded-lg overflow-hidden shadow-lg">
+          <iframe
+            className="w-full h-full"
+            title="Sirajganj, Bangladesh Location"
+            src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3650.953764765416!2d89.69696371445444!3d24.44962108424767!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x39fdcfb62b82cf5f%3A0x5e1a89121e85a9cb!2sSirajganj%2C%20Bangladesh!5e0!3m2!1sen!2sbd!4v1695553649332!5m2!1sen!2sbd"
+            allowFullScreen
+            loading="lazy"></iframe>
+        </div>
+      </div>
+
+      {/* Contact Details Section */}
+      <div className="bg-[#49e0fb] py-10 text-white">
+        <div className="max-w-4xl mx-auto px-4 md:px-6 text-center">
+          <Title className="text-3xl font-semibold text-white">
+            Contact Details
+          </Title>
+          <Space size="large" direction="vertical" className="mt-4">
+            <div className="flex items-center justify-center">
+              <EnvironmentOutlined className="text-2xl mr-2" />
+              <Text>123 Sports Ave, Sirajganj, Bangladesh</Text>
+            </div>
+            <div className="flex items-center justify-center">
+              <PhoneOutlined className="text-2xl mr-2" />
+              <Text>+880 (123) 456-7890</Text>
+            </div>
+            <div className="flex items-center justify-center">
+              <MailOutlined className="text-2xl mr-2" />
+              <Text>contact@sportyra.com</Text>
+            </div>
+          </Space>
+        </div>
+      </div>
+    </div>
   );
 };
 
-export default ContactPage;
+export default ContactUs;

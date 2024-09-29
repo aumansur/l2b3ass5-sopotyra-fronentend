@@ -1,8 +1,12 @@
 import React from "react";
 import { Button, Popconfirm, Table } from "antd";
 import type { TableColumnsType } from "antd";
-import { useGetUsersBookinsQuery, useRemoveBookingMutation } from "../../../redux/feature/Bookings/auth.bookings.api";
+
 import { TBooking } from "../../../types/booking.types";
+import {
+  useGetUsersBookingQuery,
+  useRemoveBookingMutation,
+} from "../../../redux/feature/Bookings/auth.bookings.api";
 
 interface DataType {
   key: React.Key;
@@ -12,12 +16,12 @@ interface DataType {
 }
 
 const Bookings: React.FC = () => {
-  const [removeBookin]=useRemoveBookingMutation()
-  const { data: allBookings,refetch } = useGetUsersBookinsQuery(undefined);
+  const [removeBookin] = useRemoveBookingMutation();
+  const { data: allBookings, refetch } = useGetUsersBookingQuery(undefined);
   const handleDelete = async (id: React.Key) => {
     try {
       await removeBookin(id).unwrap();
-      refetch(); 
+      refetch();
     } catch (error) {
       console.error("Failed to delete booking:", error);
     }
@@ -29,7 +33,7 @@ const Bookings: React.FC = () => {
       dataIndex: "name",
       key: "name",
       width: 150,
-      render: (text) => <a style={{ color: "#00725A" }}>{text}</a>, 
+      render: (text) => <a style={{ color: "#00725A" }}>{text}</a>,
     },
     {
       title: "Start Time",
@@ -61,15 +65,11 @@ const Bookings: React.FC = () => {
       dataIndex: "X",
       key: "x",
       render: (_, record) => (
-      
-         
         <Popconfirm
           title="Are you sure you want to delete this item?"
-          onConfirm={() => handleDelete(record.key)
-          }
-        >
+          onConfirm={() => handleDelete(record.key)}>
           <Button type="link" style={{ color: "red" }}>
-          Cancel
+            Cancel
           </Button>
         </Popconfirm>
       ),
@@ -79,7 +79,7 @@ const Bookings: React.FC = () => {
 
   const data: DataType[] =
     allBookings?.data.map(
-      ({ facility, startTime, date, payableAmount,_id }:TBooking) => ({
+      ({ facility, startTime, date, payableAmount, _id }: TBooking) => ({
         key: _id,
         ...facility,
         startTime,
@@ -90,8 +90,11 @@ const Bookings: React.FC = () => {
 
   return (
     <div
-      style={{ overflowX: "auto", padding: "20px", backgroundColor: "#f9f9f9" }}
-    >
+      style={{
+        overflowX: "auto",
+        padding: "20px",
+        backgroundColor: "#f9f9f9",
+      }}>
       <Table
         columns={columns}
         dataSource={data}

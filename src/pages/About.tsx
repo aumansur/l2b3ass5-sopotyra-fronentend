@@ -121,7 +121,7 @@ const AboutUs: React.FC = () => {
           <Space size="large" direction="vertical" className="mt-4">
             <div className="flex items-center justify-center">
               <EnvironmentOutlined className="text-2xl mr-2" />
-              <Text>123 Sports Ave, Sportstown, ST 45678</Text>
+              <Text>123 Sports Ave, Sirajganj, Bangladesh</Text>
             </div>
             <div className="flex items-center justify-center">
               <PhoneOutlined className="text-2xl mr-2" />
