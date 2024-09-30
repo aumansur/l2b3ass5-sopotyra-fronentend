@@ -61,35 +61,41 @@ const CreateFacility: React.FC = () => {
 
   // OnSubmit handler
   const onSubmit: SubmitHandler<FieldValues> = async (data) => {
-    let facilityData: FacilityFormValues = {
-      name: data.name,
-      pricePerHour: Number(data.pricePerHour),
-      description: data.description,
-      image: "",
-      location: data.location,
-    };
+    // let facilityData: FacilityFormValues = {
+    //   name: data.name,
+    //   pricePerHour: Number(data.pricePerHour),
+    //   description: data.description,
+    //   image: "",
+    //   location: data.location,
+    // };
 
-    // Handle image upload first
-    if (data.image && data.image[0]) {
-      const uploadedImageUrl = await handleImageUpload(
-        data.image[0].originFileObj
-      );
-      if (uploadedImageUrl) {
-        facilityData.image = uploadedImageUrl; // Set the Cloudinary URL
-      } else {
-        toast.error("Image upload failed. Please try again.");
-        return;
-      }
-    }
+    // // Handle image upload first
+    // if (data.image && data.image[0]) {
+    //   const uploadedImageUrl = await handleImageUpload(
+    //     data.image[0].originFileObj
+    //   );
+    //   if (uploadedImageUrl) {
+    //     facilityData.image = uploadedImageUrl; // Set the Cloudinary URL
+    //   } else {
+    //     toast.error("Image upload failed. Please try again.");
+    //     return;
+    //   }
+    // }
 
-    try {
-      const res = await addFacility(facilityData).unwrap();
-      if (res.success) {
-        toast.success("Facility has been created successfully");
-      }
-    } catch (error: any) {
-      toast.error(error.message || "An error occurred");
-    }
+    // try {
+    //   const res = await addFacility(facilityData).unwrap();
+    //   if (res.success) {
+    //     toast.success("Facility has been created successfully");
+    //   }
+    // } catch (error: any) {
+    //   toast.error(error.message || "An error occurred");
+    // }
+
+    data.append("name");
+    data.append("description");
+    data.append("pricePerHour");
+    data.append("location");
+    data.append("image");
   };
 
   // Define the onSubmit handler with type for form data

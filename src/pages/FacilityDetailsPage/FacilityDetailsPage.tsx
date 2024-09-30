@@ -1,10 +1,22 @@
 import React, { useState, useEffect } from "react";
-import { Button, Calendar, Card, Col, Rate, Row, Space, Typography } from "antd";
+import {
+  Button,
+  Calendar,
+  Card,
+  Col,
+  Rate,
+  Row,
+  Space,
+  Typography,
+} from "antd";
 import { FaLocationCrosshairs } from "react-icons/fa6";
 import { useNavigate, useParams } from "react-router-dom";
-import { useCheckFacilityAvailabilityQuery, useGetSingleFacilityQuery } from "../../redux/feature/facillity/facility.auth.api";
+import {
+  useCheckFacilityAvailabilityQuery,
+  useGetSingleFacilityQuery,
+} from "../../redux/feature/facillity/facility.auth.api";
 import FacilityBanner from "../../components/ui/FacilityBanner/FacilityBanner";
-import dayjs, { Dayjs } from 'dayjs';
+import { Dayjs } from "dayjs";
 
 const { Title, Text } = Typography;
 
@@ -33,12 +45,13 @@ const FacilityDetailsPage: React.FC = () => {
   const { data: singleFacility, isLoading: singleFacilityLoading } =
     useGetSingleFacilityQuery(facilityId);
 
-  const { data: availableSlot, isLoading, refetch } = useCheckFacilityAvailabilityQuery(
-    dataParams,
-    {
-      skip: !selectedDate || !shouldFetchSlots,
-    }
-  );
+  const {
+    data: availableSlot,
+    isLoading,
+    refetch,
+  } = useCheckFacilityAvailabilityQuery(dataParams, {
+    skip: !selectedDate || !shouldFetchSlots,
+  });
 
   useEffect(() => {
     if (shouldFetchSlots) {
@@ -54,7 +67,7 @@ const FacilityDetailsPage: React.FC = () => {
     return <h2>Loading...</h2>;
   }
 
-  const onPanelChange = (value:Dayjs) => {
+  const onPanelChange = (value: Dayjs) => {
     const formattedDate = value.format("YYYY-MM-DD");
     setSelectedDate(formattedDate);
   };
@@ -118,7 +131,9 @@ const FacilityDetailsPage: React.FC = () => {
               </Text>
             </div>
 
-            <FacilityBanner image1={singleFacility?.data?.image} image2={''}></FacilityBanner>
+            <FacilityBanner
+              image1={singleFacility?.data?.image}
+              image2={""}></FacilityBanner>
           </Card>
         </Col>
         <Col className="border-green-600" xs={24} md={8}>
@@ -133,7 +148,7 @@ const FacilityDetailsPage: React.FC = () => {
                 fullscreen={false}
                 className="mt-10"
                 style={{
-                  borderColor: '#00725A', // Accent color for borders and highlights
+                  borderColor: "#00725A", // Accent color for borders and highlights
                 }}
               />
             </div>
@@ -148,8 +163,7 @@ const FacilityDetailsPage: React.FC = () => {
               <Button
                 onClick={handleCheckAvailableSlots}
                 htmlType="submit"
-                className="bg-secondary w-full text-white"
-              >
+                className="bg-secondary w-full text-white">
                 Show Available Slots
               </Button>
             </div>
@@ -166,8 +180,7 @@ const FacilityDetailsPage: React.FC = () => {
                   justify="center"
                   align="middle"
                   gutter={[22, 0]}
-                  className="responsive-available-time"
-                >
+                  className="responsive-available-time">
                   {availableSlot.data.map((slot: TimeSlot) => (
                     <Col
                       xs={12}
@@ -175,8 +188,7 @@ const FacilityDetailsPage: React.FC = () => {
                       md={6}
                       lg={4}
                       key={slot._id}
-                      className="mb-4"
-                    >
+                      className="mb-4">
                       <Button
                         onClick={() => handleTimeSelection(slot)}
                         type="primary"
@@ -186,8 +198,7 @@ const FacilityDetailsPage: React.FC = () => {
                           selectedTime.endTime === slot.endTime
                             ? "selected"
                             : ""
-                        }`}
-                      >
+                        }`}>
                         {`${slot.startTime} - ${slot.endTime}`}
                       </Button>
                     </Col>
@@ -198,8 +209,7 @@ const FacilityDetailsPage: React.FC = () => {
                     type="primary"
                     className="bg-primary text-white"
                     onClick={handleBooking}
-                    disabled={!selectedTime}
-                  >
+                    disabled={!selectedTime}>
                     Book Now
                   </Button>
                 </div>

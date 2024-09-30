@@ -243,15 +243,7 @@ const FacilityEditModal: React.FC<FacilityEditModalProps> = ({
               />
             </Form.Item>
             {/* upload image  */}
-            {/* <Form.Item>
-              <SFInput
-                defaultValue={facilityData?.image}
-                type="text"
-                label="Image"
-                id="Image"
-                name="image"
-              />
-            </Form.Item> */}
+
             <Form.Item>
               <SFInput
                 defaultValue={facilityData?.location}
@@ -261,7 +253,9 @@ const FacilityEditModal: React.FC<FacilityEditModalProps> = ({
                 name="location"
               />
             </Form.Item>
-            <Button htmlType="submit">Update Facility</Button>
+            <button className="my-primary-btn" type="submit">
+              Update Facility
+            </button>
           </SFform>
         </Col>
       </Row>
