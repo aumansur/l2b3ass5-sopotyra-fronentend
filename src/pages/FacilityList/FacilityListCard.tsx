@@ -1,4 +1,3 @@
-import React from "react";
 import { Card, Col, Row, Typography, Button } from "antd";
 import { FaUserFriends } from "react-icons/fa";
 import { Link } from "react-router-dom";
@@ -17,7 +16,7 @@ type TFacilityProps = {
 };
 
 const FacilityCard = ({ facility }: TFacilityProps) => {
-  const { description, name, pricePerHour, image, _id } = facility;
+  const { name, pricePerHour, image, _id } = facility;
 
   return (
     <Col>
@@ -29,8 +28,7 @@ const FacilityCard = ({ facility }: TFacilityProps) => {
           padding: 4,
           border: "1px solid #e8e8e8",
         }}
-        bodyStyle={{ padding: "12px 16px" }}
-      >
+        bodyStyle={{ padding: "12px 16px" }}>
         <Row gutter={16} align="middle" className="flex gap-4">
           {/* Image Section */}
           <Col xs={7} md={8}>
@@ -38,7 +36,6 @@ const FacilityCard = ({ facility }: TFacilityProps) => {
               src={image}
               alt={name}
               style={{ width: "100%", height: "160px", objectFit: "contain" }}
-          
             />
           </Col>
           {/* Content Section */}
@@ -58,18 +55,16 @@ const FacilityCard = ({ facility }: TFacilityProps) => {
               </div>
 
               <Link to={`/facility/${_id}`}>
-                <Button
-                  type="default"
-                  className="bg-gray-200 text-green-700"
+                <button
+                  className="my-primary-btn-outline"
                   style={{
                     padding: "0 10px",
                     borderRadius: "4px",
                     fontSize: "14px",
                     fontWeight: "bold",
-                  }}
-                >
+                  }}>
                   View Details
-                </Button>
+                </button>
               </Link>
             </div>
           </Col>

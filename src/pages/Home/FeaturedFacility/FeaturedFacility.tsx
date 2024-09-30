@@ -1,6 +1,5 @@
 import { Button, Card, Col, Rate } from "antd";
 import { Link } from "react-router-dom";
-import { TFacility } from "../../../types";
 
 type TFacilityProps = {
   facility: {
@@ -39,29 +38,25 @@ const FeaturedFacility = ({ facility }: TFacilityProps) => {
           transition: "transform 0.3s ease",
         }}
         onMouseEnter={(e) => (e.currentTarget.style.transform = "scale(1.03)")}
-        onMouseLeave={(e) => (e.currentTarget.style.transform = "scale(1)")}
-      >
+        onMouseLeave={(e) => (e.currentTarget.style.transform = "scale(1)")}>
         <Card.Meta
           title={
             <div className="flex justify-between items-center">
               <span className="font-semibold text-lg">{name}</span>
-              <Rate
-                className="text-sm"
-                allowHalf
-                defaultValue={3}
-                disabled
-              />
+              <Rate className="text-sm" allowHalf defaultValue={3} disabled />
             </div>
           }
           description={
-            <div className="text-gray-600 mt-2" style={{
-              height: '4.5em', /* Approximate height for 3 lines */
-              overflow: 'hidden',
-              display: '-webkit-box',
-              WebkitBoxOrient: 'vertical',
-              WebkitLineClamp: 3,
-              textOverflow: 'ellipsis'
-            }}>
+            <div
+              className="text-gray-600 mt-2"
+              style={{
+                height: "4.5em" /* Approximate height for 3 lines */,
+                overflow: "hidden",
+                display: "-webkit-box",
+                WebkitBoxOrient: "vertical",
+                WebkitLineClamp: 3,
+                textOverflow: "ellipsis",
+              }}>
               {description}
             </div>
           }
@@ -71,8 +66,7 @@ const FeaturedFacility = ({ facility }: TFacilityProps) => {
             type="primary"
             block
             className="bg-primary text-white mt-4 hover:bg-green-700"
-            style={{ borderRadius: "4px", padding: "8px 0" }}
-          >
+            style={{ borderRadius: "4px", padding: "8px 0" }}>
             View Details
           </Button>
         </Link>

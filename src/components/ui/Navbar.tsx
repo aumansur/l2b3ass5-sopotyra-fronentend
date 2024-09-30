@@ -1,4 +1,4 @@
-import { Button, Drawer, DrawerProps, Menu } from "antd";
+import { Button, Drawer, Menu } from "antd";
 import Container from "../../Container/Container";
 import { useState } from "react";
 import "./Navbar.css";
@@ -13,7 +13,6 @@ import logo from "../../assets/sportyra-logo.png";
 
 const Navbar = () => {
   const [open, setOpen] = useState(false);
-  const [placement, setPlacement] = useState<DrawerProps["placement"]>("left");
 
   // Get the authentication state
   const isAuthenticated = useAppSelector(selectCurrentUser);
@@ -61,7 +60,6 @@ const Navbar = () => {
             <div className="md:hidden">
               <RxHamburgerMenu className="text-2xl" onClick={showDrawer} />
               <Drawer
-                placement={placement}
                 closable={false}
                 onClose={onClose}
                 open={open}

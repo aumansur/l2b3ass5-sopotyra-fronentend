@@ -1,16 +1,15 @@
 import DashboardLayout from "../components/layout/DashboardLayout";
 import ProtectedRoute from "../components/layout/ProtectedRoute";
 import AboutPage from "../pages/About";
-import About from "../pages/About/About";
+
 import BookingForm from "../pages/BookingForm/BookingForm";
 import ContactPage from "../pages/Contact";
 import FacilityDetailsPage from "../pages/FacilityDetailsPage/FacilityDetailsPage";
 import FacilityList from "../pages/FacilityList/FacilityList";
 import Home from "../pages/Home/Home/Home";
 import Login from "../pages/Login";
-// import Payment from "../pages/Payment/Payment";
+
 import Register from "../pages/Register";
-import BookingConfirmationPage from "../pages/admin/paymentPage/makePaymentPage";
 
 import Bookings from "../pages/users/Bookings/Bookings";
 import DashboardHome from "../pages/users/Dashboard/DashboardHome";

@@ -1,16 +1,15 @@
 import React from "react";
 import { Layout, Input, Menu, theme, Dropdown, Badge } from "antd";
-import { MailOutlined, BellOutlined, SearchOutlined } from "@ant-design/icons";
+import { MailOutlined, BellOutlined } from "@ant-design/icons";
 import SideBarItem from "./SideBarItem";
 import { Outlet } from "react-router-dom";
-import ScrollToTopButton from "../ui/ScrollToTop/ScrollToTop";
 
-const { Header, Content, Footer } = Layout;
+const { Header, Content,  } = Layout;
 const { Search } = Input;
 
 const DashboardLayout: React.FC = () => {
   const {
-    token: { colorBgContainer, borderRadiusLG },
+    token: {  borderRadiusLG },
   } = theme.useToken();
 
   const notificationsMenu = (

@@ -1,15 +1,6 @@
 /* eslint-disable @typescript-eslint/no-unused-vars */
 import React, { useState } from "react";
-import {
-  Button,
-  Col,
-  Form,
-  Modal,
-  Popconfirm,
-  Row,
-  Table,
-  Typography,
-} from "antd";
+import { Col, Form, Modal, Popconfirm, Row, Table, Typography } from "antd";
 import type { ColumnsType } from "antd/es/table";
 
 import {
@@ -23,7 +14,6 @@ import SFInput from "../../../components/form/SFInput/SFinput";
 import { toast } from "sonner";
 import { FieldValues, SubmitHandler } from "react-hook-form";
 import { TFacility } from "../../../types";
-import { useGetUsersBookingQuery } from "../../../redux/feature/Bookings/auth.bookings.api";
 
 const { Title } = Typography;
 
@@ -45,7 +35,6 @@ const Facility: React.FC = () => {
 
   const { data: facility } = useGetAllFacilityQuery({});
   const [removeFacility] = useRemoveFacilityMutation();
-  const { data: allBookings, refetch } = useGetUsersBookingQuery(undefined);
 
   const handleDelete = async (id: string) => {
     try {
@@ -142,7 +131,7 @@ const Facility: React.FC = () => {
           isOpen={isModalOpen}
           onOk={() => {
             setIsModalOpen(false);
-            refetch(); // Refetch bookings after updating
+            // Refetch bookings after updating
           }}
           onCancel={() => setIsModalOpen(false)}
           facilityData={selectedFacility}

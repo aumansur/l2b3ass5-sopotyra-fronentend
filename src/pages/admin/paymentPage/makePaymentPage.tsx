@@ -1,4 +1,3 @@
-import React from "react";
 import { Link, useLocation } from "react-router-dom";
 import { Button, Typography } from "antd";
 const { Title, Text } = Typography;
@@ -31,7 +30,7 @@ const BookingConfirmationPage = () => {
       </Text>
       <br />
       <div className="mt-4">
-        <Link to={'/pay'}>
+        <Link to={"/pay"}>
           <Button type="primary" onClick={handlePayment}>
             Confirm Payment
           </Button>

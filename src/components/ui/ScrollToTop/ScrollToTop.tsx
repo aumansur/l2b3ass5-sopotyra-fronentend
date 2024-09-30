@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import { useState, useEffect } from "react";
 
 const ScrollToTopButton = () => {
   const [showButton, setShowButton] = useState(false);
@@ -12,14 +12,14 @@ const ScrollToTopButton = () => {
       }
     };
 
-    window.addEventListener('scroll', handleScroll);
-    return () => window.removeEventListener('scroll', handleScroll);
+    window.addEventListener("scroll", handleScroll);
+    return () => window.removeEventListener("scroll", handleScroll);
   }, []);
 
   const scrollToTop = () => {
     window.scrollTo({
       top: 0,
-      behavior: 'smooth',
+      behavior: "smooth",
     });
   };
 
@@ -29,8 +29,7 @@ const ScrollToTopButton = () => {
         <button
           onClick={scrollToTop}
           className="fixed bottom-4 right-4 p-3 bg-blue-500 text-white rounded-full shadow-lg hover:bg-blue-600 transition-colors duration-300"
-          aria-label="Scroll to Top"
-        >
+          aria-label="Scroll to Top">
           &#8679;
         </button>
       )}

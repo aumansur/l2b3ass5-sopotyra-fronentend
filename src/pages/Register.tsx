@@ -3,7 +3,7 @@ import SFInput from "../components/form/SFInput/SFinput";
 import SFform from "../components/form/SFform/SFform";
 import { Button, Col, Divider, Form, Row, Space } from "antd";
 import { Typography } from "antd";
-import { calc } from "antd/es/theme/internal";
+
 import { FaGithub } from "react-icons/fa";
 import { FcGoogle } from "react-icons/fc";
 import { IoLogoFacebook } from "react-icons/io5";
@@ -13,18 +13,17 @@ import { useNavigate } from "react-router-dom";
 const { Title, Text } = Typography;
 
 const Register = () => {
-  const navigate=useNavigate()
-  const [createUser]=useRegisterUserMutation()
+  const navigate = useNavigate();
+  const [createUser] = useRegisterUserMutation();
   const onSubmit: SubmitHandler<FieldValues> = async (data) => {
     const userInfo = {
-      ...data
+      ...data,
     };
 
     try {
       const res = await createUser(userInfo).unwrap();
       console.log(res, "iam token and response");
 
-   
       if (res?.success) {
         toast.success("Sing up  successfully");
         navigate("/login");
@@ -41,8 +40,7 @@ const Register = () => {
         className="p-8 shadow-lg rounded-lg bg-white"
         sm={12}
         md={6}
-        style={{ minWidth: "300px" }}
-      >
+        style={{ minWidth: "300px" }}>
         <SFform onSubmit={onSubmit}>
           <Title style={{ color: "#00725A" }} level={2} className="text-white">
             Register
@@ -74,8 +72,7 @@ const Register = () => {
               />
               <Text
                 className="text-xs text-secondary"
-                style={{ float: "right", paddingTop: "9px" }}
-              >
+                style={{ float: "right", paddingTop: "9px" }}>
                 <a href="#" className="hover:underline">
                   Forgot Password?
                 </a>
@@ -91,8 +88,7 @@ const Register = () => {
                     backgroundColor: "#00725A",
                     borderColor: "#00725A",
                     width: "100%",
-                  }}
-                >
+                  }}>
                   Submit
                 </Button>
               </Form.Item>

@@ -45,6 +45,8 @@ const FacilityDetailsPage: React.FC = () => {
   const { data: singleFacility, isLoading: singleFacilityLoading } =
     useGetSingleFacilityQuery(facilityId);
 
+  console.log("details page data", singleFacility);
+
   const {
     data: availableSlot,
     isLoading,

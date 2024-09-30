@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import { useEffect, useState } from "react";
 import FacilityCard from "./FacilityListCard";
 import { TFacility } from "../../types";
 import { Calendar, Col, Form, Pagination, Row, Select } from "antd";
@@ -17,11 +17,10 @@ const FacilityList = () => {
   const location = useLocation();
   const searchTerm = location.state?.searchTerm || "";
 
-  const [getFacilities, { data: facility, isLoading }] =
-    useLazyGetAllFacilityQuery();
+  const [getFacilities] = useLazyGetAllFacilityQuery();
 
   const [currentPage, setCurrentPage] = useState(1);
-  const [pageSize, setPageSize] = useState(5);
+  const [pageSize] = useState(5);
   const [priceSort, setPriceSort] = useState("");
 
   const [allFacilities, setAllFacilities] = useState<TFacility[]>([]);
@@ -47,7 +46,7 @@ const FacilityList = () => {
   };
 
   return (
-    <Container className="md:mx-8">
+    <Container className="md:mx-8 mx-auto">
       <Row className="mt-8 flex justify-center">
         <Col xs={23} md={7} className="">
           <div className="w-72 text-center">
@@ -57,8 +56,7 @@ const FacilityList = () => {
           <Form.Item
             className="w-2/3"
             layout="vertical"
-            label={"Filter By Price"}
-          >
+            label={"Filter By Price"}>
             <Select
               onChange={handleChange}
               showSearch

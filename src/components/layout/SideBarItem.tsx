@@ -1,11 +1,7 @@
-import { Menu, MenuProps } from "antd";
+import { Menu } from "antd";
 import Sider from "antd/es/layout/Sider";
-import {
-  UploadOutlined,
-  UserOutlined,
-  VideoCameraOutlined,
-} from "@ant-design/icons";
-import { NavLink, useNavigate } from "react-router-dom";
+
+import { NavLink } from "react-router-dom";
 import { publicSidebarGenerator } from "../../utils/topbarGenerator";
 import { authenticUserRoutes } from "../../routes/route.user";
 import { useAppSelector } from "../../redux/hook";
@@ -13,9 +9,6 @@ import { selectCurrentToken } from "../../redux/feature/auth/authSlice";
 import { VerifyToken } from "../../utils/VerifyToken";
 import { TUser } from "../../types";
 import { adminPath } from "../../routes/route.admin";
-import ProtectedRoute from "./ProtectedRoute";
-import DashboardLayout from "./DashboardLayout";
-import { useEffect } from "react";
 
 const userRole = {
   USER: "user",

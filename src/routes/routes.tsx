@@ -4,9 +4,7 @@ import { routeGenerator } from "../utils/routeGenerator";
 import { authenticUserRoutes, userPaths } from "./route.user";
 import MainLayout from "../components/layout/MainLayout";
 import DashboardLayout from "../components/layout/DashboardLayout";
-import Bookings from "../pages/users/Bookings/Bookings";
-import DashboardHome from "../pages/users/Dashboard/DashboardHome";
-import { publicSidebarGenerator } from "../utils/topbarGenerator";
+
 import { adminPath } from "./route.admin";
 import ProtectedRoute from "../components/layout/ProtectedRoute";
 import NotFoundPage from "../pages/NotFound";
@@ -20,20 +18,29 @@ const router = createBrowserRouter([
   },
   {
     path: "/user",
-    element: <ProtectedRoute role={'user'}><DashboardLayout /></ProtectedRoute>,
-    children:routeGenerator(authenticUserRoutes)
+    element: (
+      <ProtectedRoute role={"user"}>
+        <DashboardLayout />
+      </ProtectedRoute>
+    ),
+    children: routeGenerator(authenticUserRoutes),
   },
   {
     path: "/admin",
-    element:<ProtectedRoute role={'admin'}> <DashboardLayout /></ProtectedRoute>,
-    children:routeGenerator(adminPath)
+    element: (
+      <ProtectedRoute role={"admin"}>
+        {" "}
+        <DashboardLayout />
+      </ProtectedRoute>
+    ),
+    children: routeGenerator(adminPath),
   },
   {
-    path: '*', // Catch-all route for 404 pages
+    path: "*", // Catch-all route for 404 pages
     element: <NotFoundPage />,
   },
   {
-    path: '/unauthorized',
+    path: "/unauthorized",
     element: <UnauthorizedPage />,
   },
 ]);

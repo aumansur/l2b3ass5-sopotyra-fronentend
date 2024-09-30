@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/no-unused-vars */
 import React from "react";
 import { useCreateAdminMutation } from "../../../redux/feature/createAdmin/createAdmin";
 import { Button, Col, Form, Row } from "antd";
@@ -7,21 +8,12 @@ import SFInput from "../../../components/form/SFInput/SFinput";
 import { toast } from "sonner";
 import { FieldValues, SubmitHandler } from "react-hook-form";
 
-// Define the form values type
-interface AdminFormValues {
-  name: string;
-  email: string;
-  password: string;
-  phone: number;
-  address: string;
-}
-
 const CreateAdmin: React.FC = () => {
   const [addAdmin] = useCreateAdminMutation();
 
   // Define the submit handler with proper types
   const onSubmit: SubmitHandler<FieldValues> = async (data) => {
-    console.log(data, 'I am created admin data');
+    console.log(data, "I am created admin data");
 
     try {
       const res = await addAdmin(data).unwrap(); // Unwrap the result to handle it as a resolved value
@@ -47,15 +39,27 @@ const CreateAdmin: React.FC = () => {
             <SFInput type="email" label="Email" id="email" name="email" />
           </Form.Item>
           <Form.Item>
-            <SFInput type="password" label="Password" id="password" name="password" />
+            <SFInput
+              type="password"
+              label="Password"
+              id="password"
+              name="password"
+            />
           </Form.Item>
           <Form.Item>
-            <SFInput type="number" label="Phone Number" id="phone" name="phone" />
+            <SFInput
+              type="number"
+              label="Phone Number"
+              id="phone"
+              name="phone"
+            />
           </Form.Item>
           <Form.Item>
             <SFInput type="text" label="Location" id="address" name="address" />
           </Form.Item>
-          <Button className="bg-primary text-white" htmlType="submit">Create Admin</Button>
+          <button className="my-primary-btn" type="submit">
+            Create Admin
+          </button>
         </SFform>
       </Col>
     </Row>

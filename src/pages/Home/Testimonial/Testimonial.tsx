@@ -1,7 +1,6 @@
 import React from "react";
 import { Carousel, Typography, Card } from "antd";
 import "antd/dist/reset.css";
-import { Color } from "antd/es/color-picker";
 
 const { Title, Text } = Typography;
 

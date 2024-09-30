@@ -3,11 +3,11 @@ import baseApi from "../../api/baseApi";
 const facilityApi = baseApi.injectEndpoints({
   endpoints: (builder) => ({
     getAllFacility: builder.query({
-      query: ({ searchTerm, limit, page, sort }) => {
+      query: ({ limit, page, sort }) => {
         return {
           url: "/facility",
           method: "GET",
-          params: { searchTerm, limit, page, sort },
+          params: { limit, page, sort },
         };
       },
       providesTags: ["facility"],
