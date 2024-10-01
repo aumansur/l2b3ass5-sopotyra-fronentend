@@ -59,9 +59,9 @@ const ContactUs: React.FC = () => {
           </Form.Item>
 
           <Form.Item className="text-center">
-            <Button type="primary" htmlType="submit" className="bg-[#49e0fb]">
+            <button type="submit" className="my-primary-btn">
               Submit
-            </Button>
+            </button>
           </Form.Item>
         </Form>
       </div>

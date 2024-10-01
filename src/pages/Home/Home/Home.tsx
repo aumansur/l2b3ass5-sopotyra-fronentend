@@ -7,7 +7,7 @@ import Footer from "../../Footer/AppFooter";
 
 import ScrollToTopButton from "../../../components/ui/ScrollToTop/ScrollToTop";
 import HowItWorks from "../InfoGraphic/HowitWork";
-import OurWorks from "../PromotionSection/PromotionSection";
+import OurWorks from "../PromotionSection/OurWorks";
 
 const Home = () => {
   return (

@@ -1,4 +1,6 @@
 import { useState, useEffect } from "react";
+import { BiUpArrow } from "react-icons/bi";
+import { MdKeyboardArrowUp } from "react-icons/md";
 
 const ScrollToTopButton = () => {
   const [showButton, setShowButton] = useState(false);
@@ -28,9 +30,9 @@ const ScrollToTopButton = () => {
       {showButton && (
         <button
           onClick={scrollToTop}
-          className="fixed bottom-4 right-4 p-3 bg-blue-500 text-white rounded-full shadow-lg hover:bg-blue-600 transition-colors duration-300"
+          className="fixed bottom-4 right-4 p-3 bg-slate-300 text-white rounded-full shadow-lg hover:bg-slate-500 transition-colors duration-300"
           aria-label="Scroll to Top">
-          &#8679;
+          <MdKeyboardArrowUp />
         </button>
       )}
     </>

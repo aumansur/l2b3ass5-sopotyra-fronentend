@@ -31,9 +31,9 @@ const BookingConfirmationPage = () => {
       <br />
       <div className="mt-4">
         <Link to={"/pay"}>
-          <Button type="primary" onClick={handlePayment}>
+          <button className="my-primary-btn" onClick={handlePayment}>
             Confirm Payment
-          </Button>
+          </button>
         </Link>
       </div>
     </div>

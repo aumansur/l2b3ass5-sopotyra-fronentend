@@ -8,6 +8,7 @@ import FacilityDetailsPage from "../pages/FacilityDetailsPage/FacilityDetailsPag
 import FacilityList from "../pages/FacilityList/FacilityList";
 import Home from "../pages/Home/Home/Home";
 import Login from "../pages/Login";
+import Payment from "../pages/Payment/Payment";
 
 import Register from "../pages/Register";
 
@@ -52,7 +53,7 @@ export const userPaths = [
   },
 
   { name: "Facility List", path: "/offered", element: <FacilityList /> },
-  // { name:'', path: "/pay", element: <Payment /> },
+  { name: "", path: "/pay", element: <Payment /> },
   { name: "Contact", path: "contact", element: <ContactPage /> },
   { name: "About", path: "about", element: <AboutPage /> },
 ];

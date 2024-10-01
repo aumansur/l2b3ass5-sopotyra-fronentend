@@ -1,6 +1,7 @@
 import React from "react";
 import { Carousel, Typography, Card } from "antd";
 import "antd/dist/reset.css";
+import Container from "../../../Container/Container";
 
 const { Title, Text } = Typography;
 
@@ -35,38 +36,40 @@ const styles = {};
 
 const TestimonialsSlider: React.FC = () => {
   return (
-    <div className="py-10 bg-[#F3F4F6]">
-      <Title className="text-center text-3xl  font-semibold mb-10">
-        <span className="text-[#49E0fb] ">Customer Reviews</span>
-      </Title>
+    <Container>
+      <div className="py-10 bg-[#F3F4F6]">
+        <Title className="text-center text-3xl  font-semibold mb-10">
+          <span className="text-[#49E0fb] ">Customer Reviews</span>
+        </Title>
 
-      <Carousel
-        arrows={true}
-        infinite={true}
-        autoplay
-        style={styles}
-        className="w-full max-w-4xl mx-auto bg-gray-">
-        {testimonialsData.map((testimonial) => (
-          <div
-            key={testimonial.id}
-            className="flex flex-col items-center text-center">
-            <Card className="w-full bg-gray-200 rounded-lg shadow-lg p-6">
-              <img
-                src={testimonial.image}
-                alt={testimonial.name}
-                className="w-24 h-24 rounded-full mb-4 mx-auto"
-              />
-              <Title level={4} className="font-medium">
-                {testimonial.name}
-              </Title>
-              <Text className="italic text-gray-600 mt-2">
-                {testimonial.feedback}
-              </Text>
-            </Card>
-          </div>
-        ))}
-      </Carousel>
-    </div>
+        <Carousel
+          arrows={true}
+          infinite={true}
+          autoplay
+          style={styles}
+          className="w-full max-w-4xl mx-auto bg-gray-">
+          {testimonialsData.map((testimonial) => (
+            <div
+              key={testimonial.id}
+              className="flex flex-col items-center text-center">
+              <Card className="w-full bg-gray-200 rounded-lg shadow-lg p-6">
+                <img
+                  src={testimonial.image}
+                  alt={testimonial.name}
+                  className="w-24 h-24 rounded-full mb-4 mx-auto"
+                />
+                <Title level={4} className="font-medium">
+                  {testimonial.name}
+                </Title>
+                <Text className="italic text-gray-600 mt-2">
+                  {testimonial.feedback}
+                </Text>
+              </Card>
+            </div>
+          ))}
+        </Carousel>
+      </div>
+    </Container>
   );
 };
 

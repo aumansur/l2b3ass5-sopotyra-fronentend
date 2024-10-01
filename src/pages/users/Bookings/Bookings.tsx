@@ -6,6 +6,7 @@ import {
   useGetUsersBookingQuery,
   useRemoveBookingMutation,
 } from "../../../redux/feature/Bookings/auth.bookings.api";
+import moment from "moment";
 
 interface DataType {
   key: React.Key;
@@ -82,7 +83,7 @@ const Bookings: React.FC = () => {
         key: _id,
         ...facility,
         startTime,
-        date,
+        date: moment().format("DD MMM YY"),
         payableAmount,
       })
     ) || [];

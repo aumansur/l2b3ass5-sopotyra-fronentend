@@ -46,7 +46,9 @@ const BookingForm = () => {
           </Form.Item>
           {/* Pass data to the Pay page */}
 
-          <Button htmlType="submit">Go for Payment</Button>
+          <button className="my-primary-btn" type="submit">
+            Go for Payment
+          </button>
         </SFform>
       </Col>
     </Row>
