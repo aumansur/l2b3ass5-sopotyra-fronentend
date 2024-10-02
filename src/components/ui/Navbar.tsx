@@ -9,7 +9,7 @@ import { userPaths } from "../../routes/route.user";
 import { publicSidebarGenerator } from "../../utils/topbarGenerator";
 import { logOut, selectCurrentUser } from "../../redux/feature/auth/authSlice";
 import { useAppSelector } from "../../redux/hook";
-import logo from "../../assets/sportyra-logo.png";
+import logo from "../../assets/sportyra-logo1.png";
 
 const Navbar = () => {
   const [open, setOpen] = useState(false);
@@ -45,7 +45,7 @@ const Navbar = () => {
   return (
     <div className="mt-3 ">
       <Container>
-        <div className="bg-slate-300">
+        <div className="bg-[#F3F4F6]">
           <div className="flex justify-between items-center px-5 md:px-0">
             <div className="flex-1 md:flex-none">
               <img className="h-13 w-28" src={logo} alt="Logo" />

@@ -13,7 +13,7 @@ Welcome to the frontend of the Sports Facility Booking Platform! This project is
 - **Routing:** React Router DOM
 - **Form Handling:** React Hook Form
 - **Styling:** Tailwind CSS
-- **API Calls:** Axios
+
 
 ## Features
 
@@ -105,3 +105,6 @@ To set up and run this project locally, follow these steps:
    git clone https://github.com/aumansur/l2b3ass5-sopotyra-fronentend.git
    cd  l2b3ass5-sopotyra-fronentend
    npm run dev 
+
+
+

@@ -62,13 +62,11 @@ const FeaturedFacility = ({ facility }: TFacilityProps) => {
           }
         />
         <Link to={`/facility/${_id}`}>
-          <Button
-            type="primary"
-            block
-            className="bg-primary text-white mt-4 hover:bg-green-700"
-            style={{ borderRadius: "4px", padding: "8px 0" }}>
-            View Details
-          </Button>
+          <div className="flex items-center justify-end mt-4 ">
+            <button className="border w-full border-[#49E0FB] text-[#49E0FB] bg-white hover:bg-[#49E0FB]  hover:text-white text-sm font-bold  px-20 rounded transition-all block py-2   ">
+              View Details
+            </button>
+          </div>
         </Link>
       </Card>
     </Col>

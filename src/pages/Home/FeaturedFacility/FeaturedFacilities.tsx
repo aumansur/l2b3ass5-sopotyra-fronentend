@@ -23,11 +23,15 @@ const FeaturedFacilities = () => {
   return (
     <div className="featured-facilities" style={{ padding: "20px" }}>
       <Container>
-        <Title className="text-start">Featured Facility</Title>
+        <Title className="text-center">
+          <span className="text-[#49e0fb]">Featured Facility</span>
+        </Title>
         <Row gutter={12}>
-          {featuredFacility?.data?.slice(0, 4).map((facility: TFacility) => (
-            <FeaturedFacility facility={facility} key={facility._id} />
-          ))}
+          {featuredFacility?.data?.data
+            ?.slice(0, 4)
+            .map((facility: TFacility) => (
+              <FeaturedFacility facility={facility} key={facility._id} />
+            ))}
         </Row>
       </Container>
     </div>

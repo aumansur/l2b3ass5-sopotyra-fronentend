@@ -94,7 +94,7 @@ const Facility: React.FC = () => {
   ];
 
   const data: FacilityType[] =
-    facility?.data.map(
+    facility?.data?.data?.map(
       ({
         location,
         name,

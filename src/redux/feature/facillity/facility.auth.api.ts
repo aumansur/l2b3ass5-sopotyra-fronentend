@@ -3,55 +3,42 @@ import baseApi from "../../api/baseApi";
 const facilityApi = baseApi.injectEndpoints({
   endpoints: (builder) => ({
     getAllFacility: builder.query({
-      query: ({ limit, page, sort }) => {
-        return {
-          url: "/facility",
-          method: "GET",
-          params: { limit, page, sort },
-        };
-      },
+      query: ({ searchTerm, limit, page, sort }) => ({
+        url: "/facility",
+        params: { searchTerm, limit, page, sort }, // This assumes your backend accepts these query parameters
+      }),
       providesTags: ["facility"],
     }),
 
     getSingleFacility: builder.query({
-      query: (facilityId) => {
-        return {
-          url: `/facility/${facilityId}`,
-          method: "GET",
-        };
-      },
+      query: (facilityId) => ({
+        url: `/facility/${facilityId}`,
+        method: "GET",
+      }),
     }),
 
     checkFacilityAvailability: builder.query({
-      query: ({ date, facility }) => {
-        return {
-          url: "/check-availability",
-          method: "GET",
-          params: { date: date, facility: facility },
-        };
-      },
+      query: ({ date, facility }) => ({
+        url: "/check-availability",
+        method: "GET",
+        params: { date, facility },
+      }),
     }),
 
     createFacility: builder.mutation({
-      query: (data) => {
-        // data should be FormData
-        return {
-          url: `/facility`,
-          method: "POST",
-          body: data,
-        };
-      },
+      query: (data) => ({
+        url: `/facility`,
+        method: "POST",
+        body: data,
+      }),
     }),
 
     updateFacility: builder.mutation({
-      query: ({ id, data }) => {
-        // data should be FormData in case of image upload
-        return {
-          url: `/facility/${id}`,
-          method: "PUT",
-          body: data,
-        };
-      },
+      query: ({ id, data }) => ({
+        url: `/facility/${id}`,
+        method: "PUT",
+        body: data,
+      }),
       invalidatesTags: ["facility"],
     }),
 
